@@ -276,9 +276,9 @@ impl TTSKoko {
         }
     }
 
-    pub fn load_voices(&mut self) {
+    pub fn load_voices(&mut self, voices_path: &str) {
         // load from json, get styles
-        let values = load_json_file(TTSKoko::JSON_DATA_F);
+        let values = load_json_file(voices_path);
         if let Ok(values) = values {
             if let Some(obj) = values.as_object() {
                 for (key, value) in obj {
