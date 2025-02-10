@@ -34,7 +34,7 @@ impl TTSKoko {
 
     pub const SAMPLE_RATE: u32 = 24000;
 
-    pub async fn new(model_path: &str) -> Self {
+    pub async fn new(model_path: &str, voices_path: &str) -> Self {
         let p = Path::new(model_path);
         if !p.exists() {
             utils::fileio::download_file_from_url(TTSKoko::MODEL_URL, model_path)
@@ -57,7 +57,7 @@ impl TTSKoko {
             model,
             styles: HashMap::new(),
         };
-        instance.load_voices();
+        instance.load_voices(voices_path);
         instance
     }
 
